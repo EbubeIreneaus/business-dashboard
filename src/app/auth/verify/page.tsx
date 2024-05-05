@@ -27,7 +27,8 @@ function Verify() {
   };
 
   const resend_email = async() =>{
-    let req = await fetch(`${backendUrl}/auth/resend_email/?id=${profileId}`, {
+    startCountdown()
+    let req = await fetch(`${backendUrl}/auth/resend_verification_email/?id=${profileId}`, {
         method: 'get',
         // headers: {
         //     'profileId': profileId
@@ -63,7 +64,8 @@ function Verify() {
             <Button
               variant="light"
               color="secondary"
-              onClick={() => startCountdown()}
+              onClick={() => resend_email()}
+              isDisabled={countdown > 0}
             >
               resend email
             </Button>

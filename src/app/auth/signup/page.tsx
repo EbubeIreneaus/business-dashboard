@@ -111,7 +111,7 @@ function SignUp() {
         if (res.status == "success") {
           setCookie('profileId', res.profileId)
           router.push('/auth/verify')
-          setFormIsLoading(false);
+          
         }
 
         if (res.status == "failed") {
