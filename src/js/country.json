@@ -1,14 +1,4 @@
-export type Country = {
-  name: string;
-  flag: string;
-  percentage: number;
-};
-export type countries = {
-  name: string;
-  code: string;
-};
-
-export const Countries: countries[] = [ 
+[ 
 {"name": "Afghanistan", "code": "AF"}, 
 {"name": "land Islands", "code": "AX"}, 
 {"name": "Albania", "code": "AL"}, 
