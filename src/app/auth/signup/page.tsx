@@ -109,17 +109,19 @@ function SignUp() {
         let res = await req.json();
 
         if (res.status == "success") {
-          setCookie('profileId', res.profileId)
+          setCookie('profileId', res.id)
           router.push('/auth/verify')
           
         }
 
         if (res.status == "failed") {
-          if(res.status.code == "email exist"){
+          if(res.code == "email_exist"){
             formData.errors.email = "Email already taken"
           }else {
             alert("Error registering new user at the moment")
           }
+          setFormIsLoading(false);
+          return false
         }
         if(!res.status){
           alert("could not register user");
@@ -129,6 +131,7 @@ function SignUp() {
         throw new Error("Unkown server error, please try again later");
       }
     },
+    
   });
 
   useEffect(() => {}, []);
