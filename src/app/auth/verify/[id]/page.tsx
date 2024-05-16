@@ -15,7 +15,7 @@ function VerifyMe() {
     try {
       let req = await fetch(`${backendUrl}/auth/verify_user/`, {
         method: "post",
-        body: JSON.stringify({ profileId: id, key: query.get("key") }),
+        body: JSON.stringify({ profileId: id, key: query.get("key")?.trim() }),
         headers: {
           "Content-Type": "application/json",
         },

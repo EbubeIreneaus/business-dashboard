@@ -40,17 +40,16 @@ const SignIn: React.FC = () => {
         }
 
         if (res.status == 'success') {
-          setCookie('profileId', res.id)
+          setCookie('profileId', res.profileId)
 
           if (!res.isEmailVerified) {
-            router.push('/auth/verify')
-            return false
+            return router.push('/auth/verify')
           }
-          router.push('/')
+          return router.push('/')
         }
 
-        if(res.status == "failed"){
-          if(res.code == "user_not_found"){
+        if(res.status === "failed"){
+          if(res.code === "user_not_found" || res.code === 'incorrect_password'){
             formData.errors.email = "user with this email and password not found"
             setIsFormProcessing(false)
             return false
